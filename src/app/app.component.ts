@@ -84,23 +84,25 @@ export class AppComponent {
 
   // Function: Inserts data in specification table
   handleSubmit(titleId: number): void {
+    const node: Node = {
+      ...this.inputNodes[titleId],
+      children: this.inputNodes[titleId].children
+        .filter((child: Subtitle) => child.subtitle || child.value)
+        .map((child: Subtitle) => ({
+          ...child,
+        })),
+    };
 
-    // Array.splice(index, No. of items to delete, ...new items to add);
+    let actualIndex = this.specifications.findIndex((node: Node) => {
+      return node.id === this.inputNodes[titleId].id;
+    });
 
-    // if node with same id exists then replace it by putting 1 as 2nd arg of splice, otherwise 0 to just add new node. 
+    if (actualIndex === -1) {
+      this.specifications.push(node);
+    } else {
+      this.specifications[actualIndex] = node;
+    }
 
-    // used filter to remove subtitle with empty values
-    this.specifications.splice(
-      titleId,
-      this.inputNodes[titleId].id === this.specifications[titleId]?.id ? 1 : 0,
-      {
-        ...this.inputNodes[titleId],
-        children: this.inputNodes[titleId].children
-          .filter((child: Subtitle) => child.subtitle || child.value)
-          .map((child: Subtitle) => ({
-            ...child,
-          })),
-      }
-    );
+    this.specifications.sort((a: Node, b: Node) => a.id - b.id);
   }
 }
