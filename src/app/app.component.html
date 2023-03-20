@@ -32,7 +32,7 @@
             id="child-title-input-{{ titleIndex }}-{{ subtitleIndex }}"
             placeholder="Subtitle"
             [value]="inputNodes[titleIndex].children[subtitleIndex].subtitle"
-            (input)="handleChildChange(titleIndex, subtitleIndex, 'subtitle', $event.target)"
+            (input)="handleSubtitleChange(titleIndex, subtitleIndex, 'subtitle', $event.target)"
           />
           <input
             type="text"
@@ -40,11 +40,11 @@
             placeholder="Value"
             id="child-value-input-{{ titleIndex }}-{{ subtitleIndex }}"
             [value]="inputNodes[titleIndex].children[subtitleIndex].value"
-            (input)="handleChildChange(titleIndex, subtitleIndex, 'value', $event.target)"
+            (input)="handleSubtitleChange(titleIndex, subtitleIndex, 'value', $event.target)"
           />
           <button
             class="btn btn-danger text-600"
-            (click)="handleChildDelete(titleIndex, subtitleIndex)"
+            (click)="handleSubtitleDelete(titleIndex, subtitleIndex)"
           >
             Delete
           </button>

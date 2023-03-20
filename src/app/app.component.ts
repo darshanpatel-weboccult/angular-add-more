@@ -64,7 +64,7 @@ export class AppComponent {
   }
 
   // Function: Updates values of subtitle and value based on provided id and field name.
-  handleChildChange(
+  handleSubtitleChange(
     titleId: number,
     subtitleId: number,
     field: 'subtitle' | 'value',
@@ -76,7 +76,7 @@ export class AppComponent {
   }
 
   // Function: Deletes subtitle with provided ids.
-  handleChildDelete(titleId: number, subtitleId: number): void {
+  handleSubtitleDelete(titleId: number, subtitleId: number): void {
     this.inputNodes[titleId].children = this.inputNodes[
       titleId
     ].children.filter((child: Subtitle, index: number) => index !== subtitleId);
