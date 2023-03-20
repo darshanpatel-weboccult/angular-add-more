@@ -1,27 +1,14 @@
-# AddMore
+# Angular Task: Add More
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+### Task:
+- Add more buttons will add a similar box below the main box.
+- Add child will add a child in the respective parent.
+- The delete button will delete the child.
+- Submit button will append details of that box under “SPECIFICATION” section
+- The order of the left side table and right side details will remain the same
+- If someone submits the 3rd table first and then submits the 2nd table then at the specification side, the first 2nd table will display and then the 3rd table. Order of submission is not important. The order of the table is important.
+- If you add/delete a child after submitting that table then it will affect the right side when you submit that table a second time.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Preview:
+![](README_ASSETS/angular_add_more_img2.png)
+![](README_ASSETS/angular_add_more_img1.png)

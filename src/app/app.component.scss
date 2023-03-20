@@ -1,0 +1,47 @@
+.container{
+    &-main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    &-inputs, &-display{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+
+}
+
+.input-group{
+    display: flex;
+    border: 1px solid gray;
+    width: 100%;
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+    &-title{
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+    &-child{
+        display: flex;
+        gap: 5px;
+        border: 1px solid yellowgreen;
+        padding: 5px;
+        align-items: center;
+    }
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    th,td{
+        border: 1px solid lightgray;
+        text-align: left;
+        padding: 5px;
+        width: 50%;
+    }
+}

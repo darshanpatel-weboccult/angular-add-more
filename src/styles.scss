@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif ;
+}
+input{
+    padding: 5px ;
+}
+.btn{
+    padding:10px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: outline 50ms ease;
+}
+.text-600{
+    font-weight: 600;
+}
+.btn-success{
+    background-color: green;
+    color: white;
+    &:hover{
+        outline: 2px solid lightgreen;
+    }
+}
+.btn-danger{
+    background-color: red;
+    color: white;
+    &:hover{
+        outline: 2px solid coral;
+    }
+}
+.btn-base{
+    background-color: gray;
+    color: white;
+    &:hover{
+        outline: 2px solid lightgray;
+    }
+}
