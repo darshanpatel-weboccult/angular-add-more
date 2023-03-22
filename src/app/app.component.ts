@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 interface Node {
-  id: number;
   title: string;
   children: Subtitle[];
 }
@@ -18,11 +18,9 @@ interface Subtitle {
 })
 export class AppComponent {
   // Variables Initialization
-  specifications: Node[] = [];
   inputNodes: Node[] = [
     // will contain input data, by default 1 input section will be there
     {
-      id: 0,
       title: '',
       children: [
         {
@@ -40,7 +38,6 @@ export class AppComponent {
   // Function: Adds new title input
   addTitle(): void {
     const newTitle: Node = {
-      id: this.inputNodes.length,
       title: '',
       children: [],
     };
@@ -75,23 +72,44 @@ export class AppComponent {
     this.inputNodes[titleId].children[subtitleId][field] = target.value;
   }
 
+  // Function: Deletes Title with provided id.
+  async handleTitleDelete(titleId: number): Promise<void> {
+    if (!(await this.getDeletePrompt())) return;
+    this.inputNodes = this.inputNodes.filter(
+      (child: Node, index: number) => index !== titleId
+    );
+  }
   // Function: Deletes subtitle with provided ids.
-  handleSubtitleDelete(titleId: number, subtitleId: number): void {
+  async handleSubtitleDelete(
+    titleId: number,
+    subtitleId: number
+  ): Promise<void> {
+    if (!(await this.getDeletePrompt())) return;
     this.inputNodes[titleId].children = this.inputNodes[
       titleId
     ].children.filter((child: Subtitle, index: number) => index !== subtitleId);
   }
 
-  // Function: Inserts data in specification table
-  handleSubmit(titleId: number): void {
-    const node: Node = {
-      ...this.inputNodes[titleId],
-      children: this.inputNodes[titleId].children
-        .filter((child: Subtitle) => child.subtitle || child.value)
-        .map((child: Subtitle) => ({
-          ...child,
-        })),
-    };
-    this.specifications[titleId] = node;
+  // Function: asks user to confirm delete and returns true or false
+  async getDeletePrompt(): Promise<boolean> {
+    let shouldDelete = true;
+    await Swal.fire({
+      title: 'Are You Sure About That??',
+      text: 'You will not be able to recover this data!',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Please Delete It!',
+      cancelButtonText: 'No, Keep It',
+    }).then((result) => {
+      shouldDelete = result.isConfirmed;
+    });
+    return shouldDelete;
+  }
+
+  // Function: returns Subtitles containing value in them.
+  filterChildren(titleId: number): Subtitle[] {
+    return this.inputNodes[titleId].children.filter(
+      (child: Subtitle) => child.subtitle || child.value
+    );
   }
 }
