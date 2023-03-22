@@ -99,10 +99,10 @@ export class AppComponent {
 
     if (actualIndex === -1) {
       this.specifications.push(node);
+      this.specifications.sort((a: Node, b: Node) => a.id - b.id);
     } else {
       this.specifications[actualIndex] = node;
     }
 
-    this.specifications.sort((a: Node, b: Node) => a.id - b.id);
   }
 }
