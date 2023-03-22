@@ -22,10 +22,10 @@
             Add Child
           </button>
           <button
-            class="btn btn-success text-600"
-            (click)="handleSubmit(titleIndex)"
+            class="btn btn-danger text-600"
+            (click)="handleTitleDelete(titleIndex)"
           >
-            Submit
+            Delete
           </button>
         </div>
         <div
@@ -75,21 +75,25 @@
     <div class="container-display">
       <h1>SPECIFICATION</h1>
       <!-- TABLES -->
-      <ng-template
-        *ngFor="let specification of specifications"
-        [ngIf]="specification"
+      <ng-container
+        *ngFor="let specification of inputNodes; let titleId = index"
       >
-        <table>
-          <tr>
+        <table *ngIf="specification.title || filterChildren(titleId).length">
+          <tr *ngIf="specification.title.length">
             <th colspan="2">{{ specification.title }}</th>
           </tr>
 
-          <tr *ngFor="let child of specification.children">
-            <td>{{ child.subtitle }}</td>
-            <td>{{ child.value }}</td>
-          </tr>
+          <ng-template
+            *ngFor="let child of specification.children"
+            [ngIf]="child.subtitle.length || child.value.length"
+          >
+            <tr>
+              <td>{{ child.subtitle }}</td>
+              <td>{{ child.value }}</td>
+            </tr>
+          </ng-template>
         </table>
-      </ng-template>
+      </ng-container>
       <!-- TABLES -->
     </div>
   </div>
