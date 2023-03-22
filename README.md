@@ -1,14 +1,11 @@
-# Angular Task: Add More
+# Angular Task: Add More Without Submit Button
 
 ### Task:
-- Add more buttons will add a similar box below the main box.
-- Add child will add a child in the respective parent.
-- The delete button will delete the child.
-- Submit button will append details of that box under “SPECIFICATION” section
-- The order of the left side table and right side details will remain the same
-- If someone submits the 3rd table first and then submits the 2nd table then at the specification side, the first 2nd table will display and then the 3rd table. Order of submission is not important. The order of the table is important.
-- If you add/delete a child after submitting that table then it will affect the right side when you submit that table a second time.
+- Remove the submit button from the [previous task](https://github.com/darshanpatel-weboccult/angular-add-more/tree/version-4.1).
+- When the user will write anything in the table at the same time that value will be added in the SPECIFICATION part.
+- Add a delete button to delete parents.
+- Add [Sweetalert2](https://sweetalert2.github.io/v10.html) alert box to take confirmation before deleting anything.
 
 ### Preview:
-![](README_ASSETS/angular_add_more_img2.png)
-![](README_ASSETS/angular_add_more_img1.png)
+![](README_ASSETS/angular-add-more-v2-img1.png)
+![](README_ASSETS/angular-add-more-v2-img2.png)
