@@ -92,17 +92,6 @@ export class AppComponent {
           ...child,
         })),
     };
-
-    let actualIndex = this.specifications.findIndex((node: Node) => {
-      return node.id === this.inputNodes[titleId].id;
-    });
-
-    if (actualIndex === -1) {
-      this.specifications.push(node);
-      this.specifications.sort((a: Node, b: Node) => a.id - b.id);
-    } else {
-      this.specifications[actualIndex] = node;
-    }
-
+    this.specifications[titleId] = node;
   }
 }

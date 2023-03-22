@@ -5,7 +5,10 @@
         Add More
       </button>
       <!-- INPUTS -->
-      <div *ngFor="let node of inputNodes; let titleIndex = index" class="input-group">
+      <div
+        *ngFor="let node of inputNodes; let titleIndex = index"
+        class="input-group"
+      >
         <div class="input-group-title">
           <input
             type="text"
@@ -18,7 +21,10 @@
           <button class="btn btn-base text-600" (click)="addChild(titleIndex)">
             Add Child
           </button>
-          <button class="btn btn-success text-600" (click)="handleSubmit(titleIndex)">
+          <button
+            class="btn btn-success text-600"
+            (click)="handleSubmit(titleIndex)"
+          >
             Submit
           </button>
         </div>
@@ -32,7 +38,14 @@
             id="child-title-input-{{ titleIndex }}-{{ subtitleIndex }}"
             placeholder="Subtitle"
             [value]="inputNodes[titleIndex].children[subtitleIndex].subtitle"
-            (input)="handleSubtitleChange(titleIndex, subtitleIndex, 'subtitle', $event.target)"
+            (input)="
+              handleSubtitleChange(
+                titleIndex,
+                subtitleIndex,
+                'subtitle',
+                $event.target
+              )
+            "
           />
           <input
             type="text"
@@ -40,7 +53,14 @@
             placeholder="Value"
             id="child-value-input-{{ titleIndex }}-{{ subtitleIndex }}"
             [value]="inputNodes[titleIndex].children[subtitleIndex].value"
-            (input)="handleSubtitleChange(titleIndex, subtitleIndex, 'value', $event.target)"
+            (input)="
+              handleSubtitleChange(
+                titleIndex,
+                subtitleIndex,
+                'value',
+                $event.target
+              )
+            "
           />
           <button
             class="btn btn-danger text-600"
@@ -55,16 +75,21 @@
     <div class="container-display">
       <h1>SPECIFICATION</h1>
       <!-- TABLES -->
-      <table *ngFor="let specification of specifications">
-        <tr>
-          <th colspan="2">{{ specification.title }}</th>
-        </tr>
+      <ng-template
+        *ngFor="let specification of specifications"
+        [ngIf]="specification"
+      >
+        <table>
+          <tr>
+            <th colspan="2">{{ specification.title }}</th>
+          </tr>
 
-        <tr *ngFor="let child of specification.children">
-          <td>{{ child.subtitle }}</td>
-          <td>{{ child.value }}</td>
-        </tr>
-      </table>
+          <tr *ngFor="let child of specification.children">
+            <td>{{ child.subtitle }}</td>
+            <td>{{ child.value }}</td>
+          </tr>
+        </table>
+      </ng-template>
       <!-- TABLES -->
     </div>
   </div>
